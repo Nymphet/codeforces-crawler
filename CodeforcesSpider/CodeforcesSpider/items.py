@@ -9,8 +9,7 @@ import scrapy
 
 
 class CodeforcesProblemItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+
     p_id                    = scrapy.Field()
     p_index                 = scrapy.Field()
     p_title                 = scrapy.Field()
@@ -26,7 +25,12 @@ class CodeforcesProblemItem(scrapy.Item):
 
 
 class CodeforcesTutorialItem(scrapy.Item):
-    pass
+
+    t_contest_ids           = scrapy.Field()
+    t_topic_title           = scrapy.Field()
+    t_url                   = scrapy.Field()
+    t_content               = scrapy.Field()
+    t_comments              = scrapy.Field()
 
 
 class CodeforcesSolutionItem(scrapy.Item):
