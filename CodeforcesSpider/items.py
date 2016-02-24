@@ -34,4 +34,5 @@ class CodeforcesTutorialItem(scrapy.Item):
 
 
 class CodeforcesSolutionItem(scrapy.Item):
-    pass
+
+    s_json                  = scrapy.Field()
