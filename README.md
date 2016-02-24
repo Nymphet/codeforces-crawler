@@ -16,7 +16,7 @@ e.g., to crawl problems
 
 add `-o` argument to save the results to a file, e.g.
 
-    scrapy crawl CodeforcesSolution  [-o solutions.jl]
+    scrapy crawl CodeforcesSolution -o solutions.jl
     
 use `scrapy list` to show a list of available spiders.
     
