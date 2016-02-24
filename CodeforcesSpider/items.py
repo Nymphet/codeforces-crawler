@@ -35,4 +35,13 @@ class CodeforcesTutorialItem(scrapy.Item):
 
 class CodeforcesSolutionItem(scrapy.Item):
 
-    s_json                  = scrapy.Field()
+    s_id                    = scrapy.Field()
+    s_index                 = scrapy.Field()
+    s_source                = scrapy.Field()
+
+
+class CodeforcesTestDataItem(scrapy.Item):
+
+    d_id                    = scrapy.Field()
+    d_index                 = scrapy.Field()
+    d_json                  = scrapy.Field()
