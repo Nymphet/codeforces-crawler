@@ -38,6 +38,8 @@ class CodeforcesSolutionItem(scrapy.Item):
     s_id                    = scrapy.Field()
     s_index                 = scrapy.Field()
     s_source                = scrapy.Field()
+    s_prevId                = scrapy.Field()
+    s_lang                  = scrapy.Field()
 
 
 class CodeforcesTestDataItem(scrapy.Item):

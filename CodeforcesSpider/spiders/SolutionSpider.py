@@ -35,12 +35,16 @@ class CodeforcesSolutionSpider(scrapy.Spider):
 
     def parse_problem_solution_list_page(self, response):
         solution_id_list = response.xpath('//tr/@data-submission-id').extract()
-        for solution in solution_id_list:
+
+        for solution_id in solution_id_list:
+            solution_lang = response.xpath(
+                '//tr[@data-submission-id=%s]/td[5]/text()' % solution_id)[0].extract().strip()
             yield scrapy.FormRequest.from_response(response, url='http://codeforces.com/data/submitSource',
                                                    formdata={
-                                                       'submissionId': solution},
-                                                   meta={'p_id': self.p_id.search(response.url).group(
-                                                       1), 'p_index': self.p_index.search(response.url).group(1)},
+                                                       'submissionId': solution_id},
+                                                   meta={'p_id': self.p_id.search(response.url).group(1),
+                                                         'p_index': self.p_index.search(response.url).group(1),
+                                                         's_lang': solution_lang},
                                                    callback=self.parse_solution)
 
     def parse_solution(self, response):
@@ -52,5 +56,7 @@ class CodeforcesSolutionSpider(scrapy.Spider):
         item['s_id'] = response.meta['p_id']
         item['s_index'] = response.meta['p_index']
         item['s_source'] = json_response['source']
+        item['s_prevId'] = json_response['prevId']
+        item['s_lang'] = response.meta['s_lang']
 
         yield item
