@@ -8,19 +8,18 @@ You will need scrapy installed to use this crawler.
 
     git clone https://github.com/Nymphet/codeforces-crawler.git
     
-    cd ./codeforces-crawler/CodeforcesSpider
+    scrapy crawl SpiderName
     
-    # to crawl problems, add -o argument to save crawled items to a file
+e.g., to crawl problems
     
-    scrapy crawl CodeforcesProblem [-o problems.jl]
+    scrapy crawl CodeforcesProblem
+
+add `-o` argument to save the results to a file, e.g.
+
+    scrapy crawl CodeforcesSolution  [-o solutions.jl]
     
-    # to crawl tutorials
+use `scrapy list` to show a list of available spiders.
     
-    scrapy crawl CodeforcesTutorial [-o tutorials.jl]
-    
-    # to crawl best solutions, not implemented yet
-    
-    scrapy crawl CodeforcesSolution [-o solutions.jl]
 
 # License
 
