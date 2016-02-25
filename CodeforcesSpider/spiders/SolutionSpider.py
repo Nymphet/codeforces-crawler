@@ -44,7 +44,8 @@ class CodeforcesSolutionSpider(scrapy.Spider):
                                                        'submissionId': solution_id},
                                                    meta={'p_id': self.p_id.search(response.url).group(1),
                                                          'p_index': self.p_index.search(response.url).group(1),
-                                                         's_lang': solution_lang},
+                                                         's_lang': solution_lang,
+                                                         's_sid': solution_id},
                                                    callback=self.parse_solution)
 
     def parse_solution(self, response):
@@ -53,10 +54,10 @@ class CodeforcesSolutionSpider(scrapy.Spider):
 
         item = CodeforcesSolutionItem()
 
-        item['s_id'] = response.meta['p_id']
+        item['s_pid'] = response.meta['p_id']
         item['s_index'] = response.meta['p_index']
         item['s_source'] = json_response['source']
-        item['s_prevId'] = json_response['prevId']
         item['s_lang'] = response.meta['s_lang']
+        item['s_sid'] = response.meta['s_sid']
 
         yield item

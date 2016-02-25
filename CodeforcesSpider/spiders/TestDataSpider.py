@@ -8,7 +8,7 @@ from CodeforcesSpider.items import CodeforcesTestDataItem
 
 
 class CodeforcesSolutionSpider(scrapy.Spider):
-    name = "CodeforcesSolution"
+    name = "CodeforcesTestData"
     allowed_domains = ["codeforces.com"]
     start_urls = ["http://codeforces.com/problemset/"]
 
