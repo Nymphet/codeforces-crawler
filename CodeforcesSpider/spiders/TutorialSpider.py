@@ -37,6 +37,10 @@ class CodeforcesTutorialSpider(scrapy.Spider):
             contest_href = response.selector.xpath('//a[contains(., "Enter")]/@href')[1]
             contest_url = response.urljoin(contest_href.extract())
             yield scrapy.Request(contest_url, callback=self.parse_tutorial_url)
+        elif response.selector.xpath('//a[contains(text(),"Tutorial")]'):
+            for tutorial_href in response.selector.xpath('//a[contains(text(),"Tutorial")]/@href'):
+                tutorial_url = response.urljoin(tutorial_href.extract())
+                yield scrapy.Request(tutorial_url, callback=self.parse_tutorial_contents)
         else:
             logging.error("No tutorial find for %s." % (response.url))
 
